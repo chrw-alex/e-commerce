@@ -1,0 +1,23 @@
+.cartBtn {
+  display: flex;
+  align-items: center;
+  margin-right: 40px;
+}
+
+.icon {
+  margin-right: 4px;
+}
+
+.cartBtn p {
+  margin-right: 10px;
+  font-weight: 500;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
+.amount {
+  background-color: var(--color1);
+  padding: 2px 12px 4px 12px;
+  border-radius: 50%;
+  color: #fff;
+}
