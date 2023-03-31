@@ -10,3 +10,10 @@ export const getProducts = () => {
       return res.data
     })
 }
+
+export const getProduct = (id) => {
+  return instanse.get(`products/${id}`)
+    .then(res => {
+      return res.data
+    })
+}
