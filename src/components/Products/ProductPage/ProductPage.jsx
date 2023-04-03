@@ -21,32 +21,30 @@ const ProductPage = () => {
     <>
       {isLoading && <Preloader />}
       {!isLoading &&
-        <>
-          <div className={style.productPage + ' container'}>
-            <Link to='/products' className={style.back}>
-              <Back className={style.backIcon} />
-              <p className={style.link}>Назад</p>
-            </Link>
-            <div className={style.productCard}>
-              <div className={style.imgInner}>
-                <img className={style.img} src={currentProduct.image} alt='img' />
-                <div className={style.actions}>
-                  <button>в корзину</button>
-                  <button>быстрый заказ</button>
-                </div>
+        <div className={style.productPage + ' container'}>
+          <Link to='/products' className={style.back}>
+            <Back className={style.backIcon} />
+            <p className={style.link}>Назад</p>
+          </Link>
+          <div className={style.productCard}>
+            <div className={style.imgInner}>
+              <img className={style.img} src={currentProduct.image} alt='img' />
+              <div className={style.actions}>
+                <button>в корзину</button>
+                <button>быстрый заказ</button>
               </div>
-              <div className={style.info}>
-                <p className={style.title}>{currentProduct.title}</p>
-                <p className={style.category}>{currentProduct.category}</p>
-                <p className={style.description}>{currentProduct.description}</p>
-                <div className={style.rating}>
-                  <StarRating initialRating={Math.round(currentProduct?.rating?.rate)} roundedCorner={false} />
-                  <p className={style.count}>{currentProduct.rating.rate.toFixed(1)} / {currentProduct.rating.count}</p>
-                </div>
+            </div>
+            <div className={style.info}>
+              <p className={style.title}>{currentProduct.title}</p>
+              <p className={style.category}>{currentProduct.category}</p>
+              <p className={style.description}>{currentProduct.description}</p>
+              <div className={style.rating}>
+                <StarRating initialRating={Math.round(currentProduct?.rating?.rate)} roundedCorner={false} />
+                <p className={style.count}>{currentProduct?.rating?.rate.toFixed(1)} / {currentProduct?.rating?.count}</p>
               </div>
             </div>
           </div>
-        </>
+        </div>
       }
     </>
 

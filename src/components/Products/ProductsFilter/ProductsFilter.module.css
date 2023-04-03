@@ -1,0 +1,138 @@
+.productsFilter {
+  margin-bottom: 40px;
+  text-align: left;
+}
+
+
+.showFormBtn {
+  border: none;
+  text-decoration: underline;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--color6);
+  background-color: transparent;
+  transition: transform .2s ease;
+  cursor: pointer;
+}
+
+.showFormBtn:hover {
+  transform: scale(1.2);
+}
+
+
+.form {
+  position: relative;
+  padding: 40px;
+  background-color: var(--color7);
+  border-radius: 4px;
+  box-shadow: 0px 2px 7px var(--color6)
+}
+
+.close {
+  position: absolute;
+  right: 6px;
+  top: 2px;
+  z-index: 10;
+  font-size: 26px;
+  opacity: .8;
+  font-weight: 500;
+  border: none;
+  background-color: transparent;
+  transition: transform .2s ease;
+  cursor: pointer;
+}
+
+.close:hover {
+  transform: scale(1.3);
+}
+
+.categoryFilter {
+  width: 25%;
+  text-align: left;
+  margin-right: 60px;
+  padding-bottom: 20px;
+}
+
+.label {
+  margin-bottom: 2px;
+  opacity: .6;
+}
+
+.categoryFilter select {
+  width: 100%;
+  padding: 4px;
+  border-radius: 4px;
+  border: 2px solid var(--color6);
+}
+
+.categoryFilter select:focus {
+  outline: 1px solid var(--color6);
+}
+
+.inputSearch {
+  width: 200px;
+}
+
+.search {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  padding-top: 20px;
+}
+
+.formInner {
+  width: 25%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.price {
+  width: 18%;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+}
+
+.price span {
+  font-size: 22px;
+  margin-left: 10px;
+  margin-right: 10px;
+}
+
+.label {
+  margin-bottom: 2px;
+  opacity: .6;
+}
+
+.input,
+.select {
+  width: 100%;
+  padding: 4px;
+  border: 1px solid var(--color6);
+  border-radius: 4px;
+}
+
+.input:focus,
+.select:focus {
+  outline: 1px solid var(--color6);
+}
+
+.price div {
+  width: 45%;
+}
+
+.searchBtn {
+  padding: 4px 42px;
+  border-radius: 4px;
+  color: #fff;
+  font-size: 16px;
+  border: none;
+  background-color: var(--color1);
+  transition: background-color .2s ease;
+  cursor: pointer;
+}
+
+.searchBtn:hover {
+  background-color: var(--color6);
+}

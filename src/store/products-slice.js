@@ -22,6 +22,43 @@ const productSlice = createSlice({
     },
     stopLoading(state) {
       state.isLoading = false
+    },
+    sortProducts(state, action) {
+      const searchParams = action.payload
+
+      if (searchParams.title) {
+        state.products = state.products.filter(product => {
+          return product.title.toLowerCase().includes(searchParams.title.toLowerCase())
+        })
+      }
+
+      if (searchParams.priceMin) {
+        state.products = state.products.filter(product => {
+          return product.price >= searchParams.priceMin
+        })
+      }
+
+      if (searchParams.priceMax) {
+        state.products = state.products.filter(product => {
+          return product.price <= searchParams.priceMax
+        })
+      }
+
+      if (searchParams.category) {
+        state.products = state.products.filter(product => {
+          return product.category === searchParams.category
+        })
+      }
+
+      if (searchParams.sortBy && searchParams.sortBy === 'priceUp') {
+        state.products = state.products.sort((x, y) => {
+          return x.price - y.price
+        })
+      } else if (searchParams.sortBy && searchParams.sortBy === 'priceDown') {
+        state.products = state.products.sort((x, y) => {
+          return y.price - x.price
+        })
+      }
     }
   }
 })
@@ -44,7 +81,6 @@ export const getProductsData = () => {
         productActions.stopLoading()
       )
     } catch (error) {
-      console.log(error)
       dispatch(
         productActions.stopLoading()
       )
@@ -68,7 +104,34 @@ export const getCurrentProduct = (id) => {
         productActions.stopLoading()
       )
     } catch (error) {
-      console.log(error)
+      dispatch(
+        productActions.stopLoading()
+      )
+    }
+  }
+}
+
+export const getProductsDataByCategory = (searchParams) => {
+  return async (dispatch) => {
+    try {
+      dispatch(
+        productActions.startLoading()
+      )
+      const productsData = await getProducts()
+
+      await dispatch(
+        productActions.updateProducts({
+          products: productsData || []
+        })
+      )
+      dispatch(
+        productActions.sortProducts(searchParams)
+
+      )
+      dispatch(
+        productActions.stopLoading()
+      )
+    } catch (error) {
       dispatch(
         productActions.stopLoading()
       )
