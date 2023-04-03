@@ -1,12 +1,25 @@
 import { useState } from 'react'
+import { useDispatch } from 'react-redux'
+import { cartActions } from '../../../store/cart-slice'
 import { NavLink } from 'react-router-dom'
 import { cutString } from '../../../helpers/helpers'
 import StarRating from 'react-svg-star-rating'
 import style from './ProductItem.module.css'
 
-const ProductItem = ({ title, id, image, price, description, category, rating }) => {
+const ProductItem = ({ title, id, image, price, rating }) => {
 
   const [isActionsVisible, setIsActionsVisible] = useState(false)
+  const dispatch = useDispatch()
+
+  const item = {
+    id,
+    title,
+    image,
+    price
+  }
+  const addItemHandler = () => {
+    dispatch(cartActions.addItem(item))
+  }
 
   return (
     <div className={style.item} onMouseEnter={() => setIsActionsVisible(true)} onMouseLeave={() => setIsActionsVisible(false)}>
@@ -20,7 +33,7 @@ const ProductItem = ({ title, id, image, price, description, category, rating })
         <div className={style.count}>{rating.rate.toFixed(1)} / {rating.count}</div>
       </div>
       {isActionsVisible && <div className={style.actions}>
-        <button>в корзину</button>
+        <button onClick={addItemHandler}>в корзину</button>
         <button>быстрый заказ</button>
       </div>}
     </div>

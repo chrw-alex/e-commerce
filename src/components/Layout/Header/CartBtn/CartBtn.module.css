@@ -1,3 +1,13 @@
+.link {
+  text-decoration: none;
+  color: #000;
+  transition: transform .2s ease;
+}
+
+.link:hover {
+  transform: scale(1.2);
+}
+
 .cartBtn {
   display: flex;
   align-items: center;
