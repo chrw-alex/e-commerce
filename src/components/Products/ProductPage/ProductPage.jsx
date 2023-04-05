@@ -1,6 +1,7 @@
 import { Link, useParams } from 'react-router-dom'
 import { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
+import { cartActions } from '../../../store/cart-slice'
 import { getCurrentProduct } from '../../../store/products-slice'
 import StarRating from 'react-svg-star-rating'
 import Preloader from '../../UI/Preloader/Preloader'
@@ -17,6 +18,17 @@ const ProductPage = () => {
     dispatch(getCurrentProduct(params.id))
   }, [dispatch, params.id])
 
+  const item = {
+    id: currentProduct.id,
+    title: currentProduct.title,
+    image: currentProduct.image,
+    price: currentProduct.price
+  }
+
+  const addItemHandler = () => {
+    dispatch(cartActions.addItem(item))
+  }
+
   return (
     <>
       {isLoading && <Preloader />}
@@ -30,7 +42,7 @@ const ProductPage = () => {
             <div className={style.imgInner}>
               <img className={style.img} src={currentProduct.image} alt='img' />
               <div className={style.actions}>
-                <button>в корзину</button>
+                <button onClick={addItemHandler}>в корзину</button>
                 <button>быстрый заказ</button>
               </div>
             </div>

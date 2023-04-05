@@ -1,0 +1,52 @@
+.formInner {
+  position: absolute;
+  top: 45px;
+  right: 0;
+  z-index: 10;
+  border: 1px solid var(--color3);
+  background-color: #fff;
+}
+
+.formInner header {
+  display: flex;
+  justify-content: space-between;
+  align-items: stretch;
+  background-color: var(--color2);
+}
+
+.login,
+.registration {
+  height: 100%;
+  text-decoration: none;
+  padding: 10px;
+  color: #fff;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  transition: background-color .2s ease;
+  cursor: pointer;
+}
+
+.login {
+  width: 40%;
+}
+
+.registration {
+  width: 60%;
+}
+
+.active {
+  background-color: var(--color6);
+}
+
+.login,
+.registration {
+  width: 100%;
+}
+
+.link:hover {
+  background-color: var(--color6);
+}
+
+.form {
+  padding: 40px;
+}

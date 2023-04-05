@@ -1,0 +1,42 @@
+.form {
+  width: 300px;
+}
+
+.formInner {
+  width: 100%;
+}
+
+.formInner:not(:last-child) {
+  margin-bottom: 20px;
+}
+
+.formInner input {
+  width: 100%;
+  padding: 4px;
+  border-radius: 4px;
+  border: 1px solid var(--color6);
+}
+
+.formInner input:focus {
+  outline: 1px solid var(--color2);
+}
+
+.formInner button {
+  padding: 8px 24px;
+  border: none;
+  border-radius: 4px;
+  background-color: var(--color2);
+  color: #fff;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  transition: background-color .2s ease;
+  cursor: pointer;
+}
+
+.formInner button:hover {
+  background-color: var(--color6);
+}
+
+.error {
+  color: red;
+}

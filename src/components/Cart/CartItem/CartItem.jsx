@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom'
 import { useDispatch } from 'react-redux'
 import { cartActions } from '../../../store/cart-slice'
 import style from './CartItem.module.css'
@@ -24,10 +25,12 @@ const CartItem = ({ id, image, title, price, quantity, total }) => {
   return (
     <div className={style.item}>
       <div className={style.imgInner}>
-        <img className={style.img} src={`${image}`} alt='img' />
+        <Link to={`/products/${id}`} className={style.link}><img className={style.img} src={`${image}`} alt='img' /> </Link>
+
       </div>
       <div className={style.info}>
-        <h3 className={style.title}>{title}</h3>
+        <Link to={`/products/${id}`} className={style.link} ><h3 className={style.title}>{title}</h3></Link>
+
         <div className={style.details}>
           <div className={style.actions}>
             <button onClick={removeItemHandler}>-</button>
