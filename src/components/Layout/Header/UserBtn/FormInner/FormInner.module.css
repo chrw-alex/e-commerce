@@ -1,10 +1,9 @@
 .formInner {
-  position: absolute;
-  top: 45px;
-  right: 0;
-  z-index: 10;
+  width: 100%;
+  margin: 0 auto;
   border: 1px solid var(--color3);
   background-color: #fff;
+  border-radius: 4px;
 }
 
 .formInner header {

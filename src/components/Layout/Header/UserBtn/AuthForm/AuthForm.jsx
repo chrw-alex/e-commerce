@@ -19,18 +19,21 @@ const AuthForm = ({ submitHandler, btnTitle }) => {
     setPassword(e.target.value)
   }
 
+  const emailInputStyle = error === 'некорректный email' || error === 'email не зарегистрирован' ? style.inputError + ' ' + style.input : style.input
+  const passwordInputStyle = error === 'пароль должен содержать не менее 8 символов' || error === 'неверный пароль' ? style.inputError + ' ' + style.input : style.input
+
   return (
     <form onSubmit={(e) => submitHandler(e, email, password)} className={style.form}>
       <div className={style.formInner}>
-        <input type='email' placeholder='Введите email' value={email} onChange={emailHandler} />
+        <input type='email' placeholder='Введите email' value={email} onChange={emailHandler} className={emailInputStyle} />
       </div>
       <div className={style.formInner}>
-        <input type='password' placeholder='Введите пароль' value={password} onChange={passwordHandler} />
+        <input type='password' placeholder='Введите пароль' value={password} onChange={passwordHandler} className={passwordInputStyle} />
       </div>
-      <div className={style.formInner}>
+      <div className={style.formInner + ' ' + style.actions}>
         {isLoading ? <PreloaderSmall /> : <button type='submit'>{btnTitle}</button>}
       </div>
-      {error && <div className={style.formInner}>
+      {error && <div className={style.formInner + ' ' + style.errorInner}>
         <p className={style.error}>{error}</p>
       </div>}
     </form>

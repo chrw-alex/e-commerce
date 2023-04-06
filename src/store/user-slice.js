@@ -5,7 +5,8 @@ const initialState = {
   currentUser: {},
   isUserAuthorized: false,
   error: '',
-  isLoading: false
+  isLoading: false,
+  isAuthSuccess: false
 }
 
 const userSlice = createSlice({
@@ -29,6 +30,9 @@ const userSlice = createSlice({
     finishLoading(state) {
       state.isLoading = false
     },
+    updateAuthStatus(state, action) {
+      state.isAuthSuccess = action.payload
+    }
   }
 })
 
@@ -41,18 +45,27 @@ export const registerNewUser = (user) => {
         userActions.startLoading()
       )
       const res = await registerUser(user)
-      await dispatch(
-        userActions.updateUser(res.data)
-      )
-      localStorage.setItem('userEmail', user.email)
-      dispatch(
-        userActions.finishLoading()
-      )
+      if (user.email.trim().length === 0 || user.password.trim().length === 0) {
+        dispatch(userActions.updateError('заполните все поля'))
+        dispatch(userActions.finishLoading())
+        return
+      }
+      if (!user.email.includes('@')) {
+        dispatch(userActions.updateError('некорректный email'))
+        dispatch(userActions.finishLoading())
+      } else if (user.password.trim().length < 8) {
+        dispatch(userActions.updateError('пароль должен содержать не менее 8 символов'))
+        dispatch(userActions.finishLoading())
+      } else {
+        await dispatch(userActions.updateUser(res.data))
+        localStorage.setItem('userEmail', user.email)
+        dispatch(userActions.finishLoading())
+        dispatch(userActions.updateAuthStatus(true))
+        dispatch(userActions.updateError(''))
+      }
     } catch (error) {
       console.log(error)
-      dispatch(
-        userActions.finishLoading()
-      )
+      dispatch(userActions.finishLoading())
     }
   }
 }
@@ -60,22 +73,32 @@ export const registerNewUser = (user) => {
 export const logIn = (loginData) => {
   return async (dispatch) => {
     try {
+      dispatch(userActions.startLoading())
       const res = await getUser(loginData.email)
+      if (loginData.email.trim().length === 0 || loginData.password.trim().length === 0) {
+        dispatch(userActions.updateError('заполните все поля'))
+        dispatch(userActions.finishLoading())
+        return
+      }
+
+      if (res === undefined) {
+        dispatch(userActions.updateError('email не зарегистрирован'))
+        dispatch(userActions.finishLoading())
+      }
+
       if (res.password === loginData.password) {
-        await dispatch(
-          userActions.updateUser(res)
-        )
+        await dispatch(userActions.updateUser(res))
         localStorage.setItem('userEmail', loginData.email)
-        dispatch(
-          userActions.updateError('')
-        )
+        dispatch(userActions.updateError(''))
+        dispatch(userActions.updateAuthStatus(true))
+        dispatch(userActions.finishLoading())
       } else {
-        dispatch(
-          userActions.updateError('неверный логин или пароль')
-        )
+        dispatch(userActions.updateError('неверный пароль'))
+        dispatch(userActions.finishLoading())
       }
     } catch (error) {
       console.log(error)
+      dispatch(userActions.finishLoading())
     }
   }
 }
@@ -84,21 +107,10 @@ export const logIn = (loginData) => {
 export const logOut = () => {
   return async (dispatch) => {
     try {
-      dispatch(
-        userActions.startLoading()
-      )
-      await dispatch(
-        userActions.removeUser()
-      )
+      await dispatch(userActions.removeUser())
       localStorage.removeItem('userEmail')
-      dispatch(
-        userActions.finishLoading()
-      )
     } catch (error) {
       console.log(error)
-      dispatch(
-        userActions.finishLoading()
-      )
     }
   }
 }

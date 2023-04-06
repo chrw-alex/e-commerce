@@ -1,5 +1,5 @@
 .form {
-  width: 300px;
+  width: 100%;
 }
 
 .formInner {
@@ -7,18 +7,33 @@
 }
 
 .formInner:not(:last-child) {
-  margin-bottom: 20px;
+  margin-bottom: 26px;
 }
 
-.formInner input {
+.input,
+.inputError {
   width: 100%;
-  padding: 4px;
+  padding: 6px;
   border-radius: 4px;
+}
+
+.input {
   border: 1px solid var(--color6);
 }
 
-.formInner input:focus {
+.input:focus {
   outline: 1px solid var(--color2);
+}
+
+.inputError {
+  border: none;
+  outline: 1px solid red;
+}
+
+.actions,
+.errorInner {
+  width: fit-content;
+  margin: 0 auto;
 }
 
 .formInner button {
@@ -39,4 +54,6 @@
 
 .error {
   color: red;
+  text-transform: uppercase;
+  letter-spacing: 2px;
 }

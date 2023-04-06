@@ -1,17 +1,18 @@
 import { useSelector, useDispatch } from 'react-redux'
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { registerNewUser, logIn, logOut } from '../../../../store/user-slice'
 import { userActions } from '../../../../store/user-slice'
 import { ReactComponent as User } from '../../../../assets/img/user.svg'
+import Modal from '../../../UI/Modal/Modal'
 import AuthForm from './AuthForm/AuthForm'
 import UserMenu from './UserMenu/UserMenu'
-import style from './UserBtn.module.css'
 import FormInner from './FormInner/FormInner'
+import style from './UserBtn.module.css'
 
 const UserBtn = () => {
   const currentUser = useSelector(state => state.user.currentUser)
   const isUserAuthorized = useSelector(state => state.user.isUserAuthorized)
-  const error = useSelector(state => state.user.error)
+  const isAuthSuccess = useSelector(state => state.user.isAuthSuccess)
 
   const [isAuthVisible, setIsAuthVisible] = useState(false)
   const [isLoginActive, setIsLoginActive] = useState(true)
@@ -19,8 +20,20 @@ const UserBtn = () => {
   const [isMenuVisible, setIsMenuVisible] = useState(false)
   const dispatch = useDispatch()
 
-  const toggleAuthVisibility = () => {
-    setIsAuthVisible(!isAuthVisible)
+  useEffect(() => {
+    if (isAuthSuccess) {
+      setIsAuthVisible(false)
+    }
+  }, [isAuthSuccess])
+
+  useEffect(() => {
+    if (!isAuthVisible) {
+      dispatch(userActions.updateAuthStatus(false))
+    }
+  }, [isAuthVisible, dispatch])
+
+  const showAuthWindow = () => {
+    setIsAuthVisible(true)
   }
 
   const toggleMenuVisibility = () => {
@@ -38,7 +51,6 @@ const UserBtn = () => {
 
   const registrationHandler = (e, email, password) => {
     e.preventDefault()
-    dispatch(userActions.startLoading())
 
     const newUser = {
       userId: Math.random().toString(),
@@ -46,17 +58,10 @@ const UserBtn = () => {
       password,
     }
     dispatch(registerNewUser(newUser))
-      .finally(() => {
-        if (error) {
-          setIsAuthVisible(false)
-        }
-        dispatch(userActions.finishLoading())
-      })
   }
 
   const loginHandler = (e, email, password) => {
     e.preventDefault()
-    dispatch(userActions.startLoading())
 
     const loginData = {
       email,
@@ -64,12 +69,6 @@ const UserBtn = () => {
     }
 
     dispatch(logIn(loginData))
-      .finally(() => {
-        if (error) {
-          setIsAuthVisible(false)
-        }
-        dispatch(userActions.finishLoading())
-      })
   }
 
   const logoutHandler = () => {
@@ -83,14 +82,16 @@ const UserBtn = () => {
         <User className={style.icon} />
         <div>
           {isUserAuthorized && <p onClick={toggleMenuVisibility}>{currentUser.email}</p>}
-          {!isUserAuthorized && <p onClick={toggleAuthVisibility}>вход</p>}
+          {!isUserAuthorized && <p onClick={showAuthWindow}>вход</p>}
         </div>
       </div>
       {isAuthVisible &&
-        <FormInner isLoginActive={isLoginActive} showLogin={showLogin} isRegistrationActive={isRegistrationActive} showRegistration={showRegistration}>
-          {isLoginActive && <AuthForm btnTitle='войти' submitHandler={loginHandler} />}
-          {isRegistrationActive && <AuthForm btnTitle='зарегистрироваться' submitHandler={registrationHandler} />}
-        </FormInner>}
+        <Modal setIsAuthVisible={setIsAuthVisible}>
+          <FormInner isLoginActive={isLoginActive} showLogin={showLogin} isRegistrationActive={isRegistrationActive} showRegistration={showRegistration}>
+            {isLoginActive && <AuthForm btnTitle='войти' submitHandler={loginHandler} />}
+            {isRegistrationActive && <AuthForm btnTitle='зарегистрироваться' submitHandler={registrationHandler} />}
+          </FormInner>
+        </Modal>}
       {isMenuVisible && <div className={style.menuInner}>
         <UserMenu logoutHandler={logoutHandler} />
       </div>}
