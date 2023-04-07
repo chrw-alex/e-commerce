@@ -1,0 +1,33 @@
+.footer {
+  width: 100%;
+}
+
+.feedback,
+.advantages,
+.info {
+  width: 100%;
+  padding-top: 30px;
+  padding-bottom: 30px;
+}
+
+.feedback,
+.info {
+  background-color: #222;
+}
+
+.feedbackInner {
+  display: flex;
+  align-items: center;
+}
+
+.discountText {
+  color: #fff;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  font-size: 22px;
+  text-align: left;
+}
+
+.advantages {
+  background-color: #333;
+}

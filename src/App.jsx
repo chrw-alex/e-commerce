@@ -27,14 +27,15 @@ const App = () => {
   return (
     <BrowserRouter>
       <div className='App'>
-        <Layout />
-        <div className='main'>
-          <Routes>
-            <Route path='/products' element={<Products />} />
-            <Route path='/products/:id' element={<ProductPage />} />
-            <Route path='/cart' element={<Cart />} />
-          </Routes>
-        </div>
+        <Layout >
+          <div className='main'>
+            <Routes>
+              <Route path='/products' element={<Products />} />
+              <Route path='/products/:id' element={<ProductPage />} />
+              <Route path='/cart' element={<Cart />} />
+            </Routes>
+          </div>
+        </ Layout>
       </div>
     </BrowserRouter>
   );

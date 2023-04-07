@@ -1,0 +1,33 @@
+.footerInfo {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.infoInner {
+  width: 50%;
+  text-align: left;
+}
+
+.infoInner p {
+  color: #999;
+  font-size: 12px;
+}
+
+.contacts {
+  margin-left: auto;
+  display: flex;
+  align-items: center;
+}
+
+.contacts a:not(:last-child) {
+  margin-right: 20px;
+}
+
+.contacts a {
+  transition: transform .2s ease;
+}
+
+.contacts a:hover {
+  transform: scale(1.2);
+}
