@@ -1,5 +1,5 @@
 .topBar {
-  background-color: var(--color1);
+  background-color: #333;
   box-shadow: -6px 0 white, 6px 0 white, 0 4px 5px -2px var(--color6);
 }
 
@@ -21,7 +21,7 @@
 }
 
 .link:hover {
-  background-color: var(--color6);
+  background-color: #222;
 }
 
 .link,
@@ -36,5 +36,6 @@
 }
 
 .active {
-  background-color: var(--color6);
+  background-color: #222;
+  font-size: 18px;
 }

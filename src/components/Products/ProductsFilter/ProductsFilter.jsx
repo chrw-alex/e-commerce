@@ -61,7 +61,6 @@ const ProductsFilter = () => {
               <label htmlFor='priceMin' className={style.label}>$Цена от:</label>
               <input type='number' id='priceMin' className={style.input} ref={priceMinRef} />
             </div>
-            <span> - </span>
             <div className={style.formInner}>
               <label htmlFor='priceMax' className={style.label}>$Цена до:</label>
               <input type='number' id='priceMax' className={style.input} ref={priceMaxRef} />
@@ -75,6 +74,8 @@ const ProductsFilter = () => {
               <option value='priceDown'>убыванию цены</option>
             </select>
           </div>
+        </div>
+        <div className={style.buttonInner}>
           <button className={style.searchBtn} onClick={searchHandler}>Поиск</button>
         </div>
       </form>}

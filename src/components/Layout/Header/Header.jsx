@@ -1,7 +1,6 @@
 import { ReactComponent as Logo } from '../../../assets/img/logo.svg'
 import { ReactComponent as Mobile } from '../../../assets/img/mobile.svg'
 import CartBtn from './CartBtn/CartBtn'
-import ComparisonBtn from './ComparisonBtn/ComparisonBtn'
 import style from './Header.module.css'
 import UserBtn from './UserBtn/UserBtn'
 
@@ -21,7 +20,7 @@ const Header = () => {
         <p className={style.schedule}>ежедневно с 10.00 до 22.00</p>
       </div>
       <div className={style.btns}>
-        <ComparisonBtn />
+        {/* <ComparisonBtn /> */}
         <CartBtn />
         <UserBtn />
       </div>

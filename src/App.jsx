@@ -7,6 +7,7 @@ import { userActions } from './store/user-slice';
 import Layout from './components/Layout/Layout';
 import Products from './components/Products/Products';
 import ProductPage from './components/Products/ProductPage/ProductPage';
+import Info from './components/Info/Info';
 import Cart from './components/Cart/Cart';
 import './App.css';
 
@@ -32,6 +33,7 @@ const App = () => {
             <Routes>
               <Route path='/products' element={<Products />} />
               <Route path='/products/:id' element={<ProductPage />} />
+              <Route path='/info' element={<Info />} />
               <Route path='/cart' element={<Cart />} />
             </Routes>
           </div>

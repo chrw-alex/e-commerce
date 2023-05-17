@@ -1,0 +1,68 @@
+.title {
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  font-size: 30px;
+  margin-bottom: 40px;
+}
+
+.info {
+  padding-top: 20px;
+}
+
+.details {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  margin-bottom: 40px;
+}
+
+.detailsItem {
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 40px;
+}
+
+.detailsItem h3,
+.geography h3,
+.attention h3 {
+  font-size: 24px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.ways {
+  display: flex;
+}
+
+.ways p {
+  padding: 4px 10px;
+  border-radius: 4px;
+  background-color: #999;
+  color: #fff;
+  margin-right: 10px;
+  text-transform: uppercase;
+}
+
+.ways p:not(:last-child) {
+  margin-right: 12px;
+}
+
+.geography {
+  text-align: left;
+  margin-bottom: 60px;
+}
+
+.geography p {
+  width: 85%;
+  color: #555;
+}
+
+.attention {
+  text-align: left;
+}
+
+.attention h3 {
+  color: red;
+}

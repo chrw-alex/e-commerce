@@ -1,0 +1,18 @@
+.workingHours {
+  display: flex;
+  align-items: center;
+}
+
+.time {
+  margin-right: 20px;
+  padding: 4px 14px;
+  border-radius: 4px;
+  background-color: var(--color3);
+}
+
+.days span {
+  margin-right: 6px;
+  padding: 4px 6px;
+  border-radius: 4px;
+  background-color: var(--color4);
+}

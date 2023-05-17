@@ -12,7 +12,7 @@
 }
 
 .item:hover {
-  box-shadow: 0px 2px 7px var(--color2);
+  box-shadow: 0px 2px 7px var(--color5);
 }
 
 .item:not(:nth-child(4n)) {
@@ -64,7 +64,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  box-shadow: 0px 2px 7px var(--color2);
+  box-shadow: 0px 2px 7px var(--color5);
 }
 
 .actions button {
@@ -73,7 +73,7 @@
   padding-bottom: 6px;
   border: none;
   border-radius: 2px;
-  background-color: var(--color1);
+  background-color: #222;
   font-size: 18px;
   color: #fff;
   font-size: 14px;
@@ -89,5 +89,5 @@
 }
 
 .actions button:hover {
-  background-color: var(--color6);
+  background-color: var(--color2);
 }

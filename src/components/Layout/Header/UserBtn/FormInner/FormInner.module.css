@@ -19,6 +19,7 @@
   text-decoration: none;
   padding: 10px;
   color: #fff;
+  text-align: center;
   text-transform: uppercase;
   letter-spacing: 2px;
   transition: background-color .2s ease;
@@ -42,9 +43,9 @@
   width: 100%;
 }
 
-.link:hover {
+/* .link:hover {
   background-color: var(--color6);
-}
+} */
 
 .form {
   padding: 40px;
