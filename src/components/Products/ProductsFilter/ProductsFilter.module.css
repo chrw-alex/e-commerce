@@ -127,13 +127,13 @@
 }
 
 .searchBtn {
-  padding: 8px 60px;
+  padding: 12px 60px;
   border-radius: 4px;
   color: #fff;
   text-transform: uppercase;
   letter-spacing: 1px;
   border: none;
-  background-color: #222;
+  background-color: #555;
   transition: background-color .2s ease;
   cursor: pointer;
 }

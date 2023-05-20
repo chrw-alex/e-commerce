@@ -10,7 +10,7 @@
   display: flex;
   justify-content: space-between;
   align-items: stretch;
-  background-color: var(--color2);
+  background-color: #555;
 }
 
 .login,
@@ -35,17 +35,13 @@
 }
 
 .active {
-  background-color: var(--color6);
+  background-color: var(--color2);
 }
 
 .login,
 .registration {
   width: 100%;
 }
-
-/* .link:hover {
-  background-color: var(--color6);
-} */
 
 .form {
   padding: 40px;

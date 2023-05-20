@@ -43,7 +43,6 @@ const ProductPage = () => {
               <img className={style.img} src={currentProduct.image} alt='img' />
               <div className={style.actions}>
                 <button onClick={addItemHandler}>в корзину</button>
-                <button>быстрый заказ</button>
               </div>
             </div>
             <div className={style.info}>

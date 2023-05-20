@@ -34,7 +34,6 @@ const ProductItem = ({ title, id, image, price, rating }) => {
       </div>
       {isActionsVisible && <div className={style.actions}>
         <button onClick={addItemHandler}>в корзину</button>
-        <button>быстрый заказ</button>
       </div>}
     </div>
   )

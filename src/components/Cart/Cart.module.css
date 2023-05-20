@@ -25,10 +25,10 @@
 }
 
 .order button {
-  padding: 10px 24px;
+  padding: 12px 24px;
   border: none;
   border-radius: 4px;
-  background-color: var(--color2);
+  background-color: #555;
   color: #fff;
   font-size: 18px;
   text-transform: uppercase;
@@ -38,7 +38,7 @@
 }
 
 .order button:hover {
-  background-color: var(--color6);
+  background-color: var(--color2);
 }
 
 .emptyCart {

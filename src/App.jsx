@@ -8,7 +8,9 @@ import Layout from './components/Layout/Layout';
 import Products from './components/Products/Products';
 import ProductPage from './components/Products/ProductPage/ProductPage';
 import Info from './components/Info/Info';
+import About from './components/About/About';
 import Cart from './components/Cart/Cart';
+import Feedback from './components/Feedback/Feedback';
 import './App.css';
 
 const App = () => {
@@ -34,6 +36,8 @@ const App = () => {
               <Route path='/products' element={<Products />} />
               <Route path='/products/:id' element={<ProductPage />} />
               <Route path='/info' element={<Info />} />
+              <Route path='/about' element={<About />} />
+              <Route path='/feedback' element={<Feedback />} />
               <Route path='/cart' element={<Cart />} />
             </Routes>
           </div>

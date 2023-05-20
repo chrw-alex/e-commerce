@@ -6,7 +6,7 @@
   padding: 8px 24px;
   border: none;
   border-radius: 4px;
-  background-color: var(--color2);
+  background-color: #555;
   color: #fff;
   text-transform: uppercase;
   letter-spacing: 2px;
@@ -15,5 +15,5 @@
 }
 
 .userMenu button:hover {
-  background-color: var(--color6);
+  background-color: var(--color2);
 }
