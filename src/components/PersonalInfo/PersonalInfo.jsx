@@ -1,6 +1,7 @@
 import { useSelector, useDispatch } from 'react-redux'
 import { useState } from 'react'
 import { updateUserInfo } from '../../store/user-slice';
+import { PatternFormat } from 'react-number-format';
 import Preloader from './../UI/Preloader/Preloader';
 import PreloaderSmall from '../UI/PreloaderSmall/PreloaderSmall';
 import style from './PersonalInfo.module.css'
@@ -67,7 +68,7 @@ const PersonalInfo = () => {
             </div>
             <div className={style.formInner}>
               <label htmlFor='phone' className={style.text}>Телефон</label>
-              <input type='tel' className={style.input} id='phone' placeholder='+375(XX) XXX-XX-XX' defaultValue={currentUser.phone} onChange={phoneHandler} />
+              <PatternFormat format='+375 (##) ###-##-##' allowEmptyFormatting mask='_' className={style.input} id='phone' defaultValue={currentUser.phone} onChange={phoneHandler} />
             </div>
             <div className={style.formInner}>
               <label htmlFor='lastName' className={style.text}>Фамилия</label>

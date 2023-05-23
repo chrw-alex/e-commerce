@@ -3,8 +3,8 @@ import { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { cartActions } from '../../../store/cart-slice'
 import { getCurrentProduct } from '../../../store/products-slice'
-import StarRating from 'react-svg-star-rating'
 import Preloader from '../../UI/Preloader/Preloader'
+import { Rating } from 'react-simple-star-rating'
 import { ReactComponent as Back } from '../../../assets/img/back.svg'
 import style from './ProductPage.module.css'
 
@@ -50,7 +50,7 @@ const ProductPage = () => {
               <p className={style.category}>{currentProduct.category}</p>
               <p className={style.description}>{currentProduct.description}</p>
               <div className={style.rating}>
-                <StarRating initialRating={Math.round(currentProduct?.rating?.rate)} roundedCorner={false} />
+                <Rating initialValue={Math.round(currentProduct?.rating?.rate)} fillColor='#0abda0' />
                 <p className={style.count}>{currentProduct?.rating?.rate.toFixed(1)} / {currentProduct?.rating?.count}</p>
               </div>
             </div>

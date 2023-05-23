@@ -3,7 +3,7 @@ import { useDispatch } from 'react-redux'
 import { cartActions } from '../../../store/cart-slice'
 import { NavLink } from 'react-router-dom'
 import { cutString } from '../../../helpers/helpers'
-import StarRating from 'react-svg-star-rating'
+import { Rating } from 'react-simple-star-rating'
 import style from './ProductItem.module.css'
 
 const ProductItem = ({ title, id, image, price, rating }) => {
@@ -29,7 +29,7 @@ const ProductItem = ({ title, id, image, price, rating }) => {
           <img className={style.img} src={image} alt='img' />
         </NavLink>
         <div className={style.price}>{`$${price}`}</div>
-        <StarRating size='26' initialRating={Math.round(rating.rate)} roundedCorner={false} />
+        <Rating size={24} initialValue={Math.round(rating.rate)} fillColor='#0abda0' />
         <div className={style.count}>{rating.rate.toFixed(1)} / {rating.count}</div>
       </div>
       {isActionsVisible && <div className={style.actions}>
