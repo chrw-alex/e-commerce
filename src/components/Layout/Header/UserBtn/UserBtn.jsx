@@ -53,7 +53,6 @@ const UserBtn = () => {
     e.preventDefault()
 
     const newUser = {
-      userId: Math.random().toString(),
       email,
       password,
     }

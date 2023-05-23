@@ -1,12 +1,14 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { getUser, registerUser } from '../api/mockapi';
+import { getUser, registerUser, changeUser } from '../api/mockapi';
 
 const initialState = {
   currentUser: {},
   isUserAuthorized: false,
   error: '',
   isLoading: false,
-  isAuthSuccess: false
+  isAuthSuccess: false,
+  isUserDataChanging: false,
+  isChangeSuccess: false
 }
 
 const userSlice = createSlice({
@@ -32,7 +34,19 @@ const userSlice = createSlice({
     },
     updateAuthStatus(state, action) {
       state.isAuthSuccess = action.payload
-    }
+    },
+    startDataChanging(state) {
+      state.isUserDataChanging = true
+    },
+    finishDataChanging(state) {
+      state.isUserDataChanging = false
+    },
+    setDataChangeSuccessTrue(state) {
+      state.isChangeSuccess = true
+    },
+    setDataChangeSuccessFalse(state) {
+      state.isChangeSuccess = false
+    },
   }
 })
 
@@ -111,6 +125,26 @@ export const logOut = () => {
       localStorage.removeItem('userEmail')
     } catch (error) {
       console.log(error)
+    }
+  }
+}
+
+
+export const updateUserInfo = (userData) => {
+  return async (dispatch) => {
+    try {
+      dispatch(userActions.startDataChanging())
+      const res = await changeUser(userData.id, userData)
+      await dispatch(userActions.updateUser(res.data))
+      dispatch(userActions.finishDataChanging())
+      dispatch(userActions.setDataChangeSuccessTrue())
+      setTimeout(() => {
+        dispatch(userActions.setDataChangeSuccessFalse())
+      }, 3000)
+
+    } catch (error) {
+      console.log(error)
+      dispatch(userActions.finishDataChanging())
     }
   }
 }

@@ -14,3 +14,7 @@ export const getUser = (email) => {
       return res.data[0]
     })
 }
+
+export const changeUser = (id, data) => {
+  return instanse.put(`users/${id}`, { ...data })
+}

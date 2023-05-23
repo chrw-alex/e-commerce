@@ -1,6 +1,6 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { useEffect } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { getUser } from './api/mockapi';
 import { userActions } from './store/user-slice';
 
@@ -12,10 +12,12 @@ import About from './components/About/About';
 import Cart from './components/Cart/Cart';
 import Feedback from './components/Feedback/Feedback';
 import './App.css';
+import PersonalInfo from './components/PersonalInfo/PersonalInfo';
 
 const App = () => {
 
   const dispatch = useDispatch()
+  const isUserAuthorized = useSelector(state => state.user.isUserAuthorized)
 
   useEffect(() => {
     const email = localStorage.getItem('userEmail')
@@ -39,6 +41,7 @@ const App = () => {
               <Route path='/about' element={<About />} />
               <Route path='/feedback' element={<Feedback />} />
               <Route path='/cart' element={<Cart />} />
+              <Route path='/personal' element={isUserAuthorized ? <PersonalInfo /> : null} />
             </Routes>
           </div>
         </ Layout>
