@@ -25,8 +25,7 @@ const CartItem = ({ id, image, title, price, quantity, total }) => {
   return (
     <div className={style.item}>
       <div className={style.imgInner}>
-        <Link to={`/products/${id}`} className={style.link}><img className={style.img} src={`${image}`} alt='img' /> </Link>
-
+        <Link to={`/products/${id}`} className={style.link}><img className={style.img} src={image} alt='img' /> </Link>
       </div>
       <div className={style.info}>
         <Link to={`/products/${id}`} className={style.link} ><h3 className={style.title}>{title}</h3></Link>

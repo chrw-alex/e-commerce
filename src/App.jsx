@@ -11,8 +11,9 @@ import Info from './components/Info/Info';
 import About from './components/About/About';
 import Cart from './components/Cart/Cart';
 import Feedback from './components/Feedback/Feedback';
-import './App.css';
 import PersonalInfo from './components/PersonalInfo/PersonalInfo';
+import OrderPage from './components/OrderPage/OrderPage';
+import './App.css';
 
 const App = () => {
 
@@ -42,6 +43,7 @@ const App = () => {
               <Route path='/feedback' element={<Feedback />} />
               <Route path='/cart' element={<Cart />} />
               <Route path='/personal' element={isUserAuthorized ? <PersonalInfo /> : null} />
+              <Route path='/order' element={<OrderPage />} />
             </Routes>
           </div>
         </ Layout>

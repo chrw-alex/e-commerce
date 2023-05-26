@@ -7,12 +7,14 @@ import Modal from '../../../UI/Modal/Modal'
 import AuthForm from './AuthForm/AuthForm'
 import UserMenu from './UserMenu/UserMenu'
 import FormInner from './FormInner/FormInner'
+import PreloaderSmall from '../../../UI/PreloaderSmall/PreloaderSmall'
 import style from './UserBtn.module.css'
 
 const UserBtn = () => {
   const currentUser = useSelector(state => state.user.currentUser)
   const isUserAuthorized = useSelector(state => state.user.isUserAuthorized)
   const isAuthSuccess = useSelector(state => state.user.isAuthSuccess)
+  const isLoading = useSelector(state => state.user.isLoading)
 
   const [isAuthVisible, setIsAuthVisible] = useState(false)
   const [isLoginActive, setIsLoginActive] = useState(true)
@@ -77,13 +79,16 @@ const UserBtn = () => {
 
   return (
     <div className={style.userBtn}>
-      <div className={style.userInfo}>
-        <User className={style.icon} />
-        <div>
-          {isUserAuthorized && <p onClick={toggleMenuVisibility}>{currentUser.email}</p>}
-          {!isUserAuthorized && <p onClick={showAuthWindow}>вход</p>}
+      {isLoading && <PreloaderSmall />}
+      {!isLoading &&
+        <div className={style.userInfo}>
+          <User className={style.icon} />
+          <div>
+            {isUserAuthorized && <p onClick={toggleMenuVisibility}>{currentUser.email}</p>}
+            {!isUserAuthorized && <p onClick={showAuthWindow}>вход</p>}
+          </div>
         </div>
-      </div>
+      }
       {isAuthVisible &&
         <Modal setIsAuthVisible={setIsAuthVisible}>
           <FormInner isLoginActive={isLoginActive} showLogin={showLogin} isRegistrationActive={isRegistrationActive} showRegistration={showRegistration}>

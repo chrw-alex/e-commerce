@@ -12,11 +12,12 @@ const PersonalInfo = () => {
   const isLoading = useSelector(state => state.user.isLoading)
   const isUserDataChanging = useSelector(state => state.user.isUserDataChanging)
   const isChangeSuccess = useSelector(state => state.user.isChangeSuccess)
-  console.log(currentUser)
+
   const [password, setPassword] = useState(currentUser.password)
   const [phone, setPhone] = useState(currentUser.phone)
   const [lastName, setLastName] = useState(currentUser.lastName)
   const [name, setName] = useState(currentUser.name)
+  const [address, setAddress] = useState(currentUser.address)
   const dispatch = useDispatch()
 
   const passwordHandler = (e) => {
@@ -35,6 +36,10 @@ const PersonalInfo = () => {
     setName(e.target.value)
   }
 
+  const addressHandler = (e) => {
+    setAddress(e.target.value)
+  }
+
   const changeUserHandler = (e) => {
     e.preventDefault()
 
@@ -45,6 +50,7 @@ const PersonalInfo = () => {
       phone,
       lastName,
       name,
+      address,
     }
 
     dispatch(updateUserInfo(userData))
@@ -56,27 +62,30 @@ const PersonalInfo = () => {
       {isLoading && <Preloader />}
       {!isLoading &&
         <div className={style.personal}>
-          <p className={style.text}></p>
           <form className={style.form} onSubmit={changeUserHandler}>
             <div className={style.formInner}>
-              <label htmlFor='email' className={style.text}>Контактный e-mail</label>
+              <label htmlFor='email' className={style.label}>Контактный e-mail</label>
               <input type='email' className={style.input + ' ' + style.noFocus} id='email' value={currentUser.email} readOnly />
             </div>
             <div className={style.formInner}>
-              <label htmlFor='password' className={style.text}>Пароль</label>
+              <label htmlFor='password' className={style.label}>Пароль</label>
               <input type='password' className={style.input} id='password' defaultValue={currentUser.password} onChange={passwordHandler} />
             </div>
             <div className={style.formInner}>
-              <label htmlFor='phone' className={style.text}>Телефон</label>
+              <label htmlFor='phone' className={style.label}>Телефон</label>
               <PatternFormat format='+375 (##) ###-##-##' allowEmptyFormatting mask='_' className={style.input} id='phone' defaultValue={currentUser.phone} onChange={phoneHandler} />
             </div>
             <div className={style.formInner}>
-              <label htmlFor='lastName' className={style.text}>Фамилия</label>
+              <label htmlFor='lastName' className={style.label}>Фамилия</label>
               <input type='text' className={style.input} id='lastName' defaultValue={currentUser.lastName} onChange={lastNameHandler} />
             </div>
             <div className={style.formInner}>
-              <label htmlFor='name' className={style.text}>Имя</label>
+              <label htmlFor='name' className={style.label}>Имя</label>
               <input type='text' className={style.input} id='name' defaultValue={currentUser.name} onChange={nameHandler} />
+            </div>
+            <div className={style.formInner}>
+              <label htmlFor='address' className={style.label}>Адрес доставки</label>
+              <input type='text' className={style.input} id='address' defaultValue={currentUser.address} onChange={addressHandler} />
             </div>
             <div className={style.formInner}>
               {isUserDataChanging && <PreloaderSmall />}

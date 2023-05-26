@@ -59,7 +59,7 @@
 }
 
 .actions button:hover {
-  background-color: var(--color6);
+  background-color: var(--color2);
 }
 
 .quantity,

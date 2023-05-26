@@ -22,7 +22,9 @@ const Cart = () => {
           <span>${totalPrice.toFixed(2)}</span>
         </div>
         <div>
-          <button>Заказать</button>
+          <Link to='/order'>
+            <button className={style.button}>Заказать</button>
+          </Link>
         </div>
       </div>}
     </div>
