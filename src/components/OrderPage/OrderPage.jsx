@@ -30,6 +30,19 @@ const OrderPage = () => {
     }
   }, [deliveryWay, totalPrice])
 
+  const confirmOrder = () => {
+
+    const orderData = {
+      order: items,
+      totalPrice: totalPrice.toFixed(2),
+      deliveryWay,
+      paymentWay,
+      totalWithDelivery: totalWithDelivery.toFixed(2),
+    }
+
+    console.log(orderData)
+  }
+
   return (
     <div className={style.order}>
       <div className='container'>
@@ -42,7 +55,7 @@ const OrderPage = () => {
           </div>
           <div className={style.total}>
             <p>
-              Сумма заказа: ${totalPrice}
+              Сумма заказа: ${totalPrice.toFixed(2)}
             </p>
           </div>
           <div className={style.details}>
@@ -94,10 +107,13 @@ const OrderPage = () => {
           </div>
           <div className={style.total}>
             <p>
-              Итого: ${totalWithDelivery}
+              Итого: ${totalWithDelivery.toFixed(2)}
             </p>
           </div>
           <ContactsInfo />
+          <div className={style.buttonInner}>
+            <button className={style.button} onClick={confirmOrder}>Подтвердить заказ (${totalWithDelivery.toFixed(2)})</button>
+          </div>
         </div>
       </div>
     </div>

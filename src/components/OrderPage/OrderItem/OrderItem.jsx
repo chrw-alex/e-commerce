@@ -7,7 +7,7 @@ const OrderItem = ({ image, title, quantity, total }) => {
       <div className={style.info}>
         <p className={style.title}>{title}</p>
         <p className={style.details}>{quantity} шт.</p>
-        <p className={style.details}>${total}</p>
+        <p className={style.details}>${total.toFixed(2)}</p>
       </div>
     </div>
   )

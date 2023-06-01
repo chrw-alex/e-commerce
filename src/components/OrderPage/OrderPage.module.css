@@ -7,11 +7,6 @@
   margin-bottom: 40px;
 }
 
-/* .info {
-  width: 80%;
-  margin: 0 auto;
-} */
-
 .items {
   border-top: 1px solid var(--color4);
 }
@@ -82,7 +77,11 @@
   text-transform: uppercase;
 }
 
-/* .button {
+.buttonInner {
+  text-align: right;
+}
+
+.button {
   padding: 10px 40px;
   border: none;
   border-radius: 4px;
@@ -96,4 +95,4 @@
 
 .button:hover {
   background-color: var(--color2);
-} */
+}

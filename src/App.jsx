@@ -1,8 +1,9 @@
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { getUser } from './api/mockapi';
+import { getUser, changeUser } from './api/mockapi';
 import { userActions } from './store/user-slice';
+import { getCartData } from './store/cart-slice';
 
 import Layout from './components/Layout/Layout';
 import Products from './components/Products/Products';
@@ -19,6 +20,11 @@ const App = () => {
 
   const dispatch = useDispatch()
   const isUserAuthorized = useSelector(state => state.user.isUserAuthorized)
+  const cart = useSelector(state => state.cart.items)
+  const isCartChanged = useSelector(state => state.cart.isCartChanged)
+  const itemsAmount = useSelector(state => state.cart.itemsAmount)
+  const currentUser = useSelector(state => state.user.currentUser)
+  const totalPrice = useSelector(state => state.cart.totalPrice)
 
   useEffect(() => {
     const email = localStorage.getItem('userEmail')
@@ -29,6 +35,20 @@ const App = () => {
         .finally(() => dispatch(userActions.finishLoading()))
     }
   }, [dispatch])
+
+  useEffect(() => {
+    const email = localStorage.getItem('userEmail')
+    if (email) {
+      dispatch(getCartData(email))
+    }
+  }, [dispatch, currentUser])
+
+  useEffect(() => {
+    if (currentUser.id) {
+      changeUser(currentUser.id, { cart, itemsAmount, totalPrice })
+    }
+  }, [isCartChanged, cart, itemsAmount])
+
 
   return (
     <BrowserRouter>

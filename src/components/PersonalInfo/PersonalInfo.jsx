@@ -65,7 +65,7 @@ const PersonalInfo = () => {
           <form className={style.form} onSubmit={changeUserHandler}>
             <div className={style.formInner}>
               <label htmlFor='email' className={style.label}>Контактный e-mail</label>
-              <input type='email' className={style.input + ' ' + style.noFocus} id='email' value={currentUser.email} readOnly />
+              <input type='email' className={style.input + ' ' + style.noFocus} id='email' defaultValue={currentUser.email} readOnly />
             </div>
             <div className={style.formInner}>
               <label htmlFor='password' className={style.label}>Пароль</label>

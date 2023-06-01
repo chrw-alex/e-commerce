@@ -11,13 +11,14 @@ const ProductItem = ({ title, id, image, price, rating }) => {
   const [isActionsVisible, setIsActionsVisible] = useState(false)
   const dispatch = useDispatch()
 
-  const item = {
-    id,
-    title,
-    image,
-    price
-  }
   const addItemHandler = () => {
+    const item = {
+      id,
+      title,
+      image,
+      price
+    }
+
     dispatch(cartActions.addItem(item))
   }
 

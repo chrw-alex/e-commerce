@@ -13,19 +13,20 @@ const ProductPage = () => {
   const dispatch = useDispatch()
   const isLoading = useSelector(state => state.products.isLoading)
   const currentProduct = useSelector(state => state.products.currentProduct)
+  const currentUser = useSelector(state => state.user.currentUser)
+  const cart = useSelector(state => state.cart.cart)
 
   useEffect(() => {
     dispatch(getCurrentProduct(params.id))
   }, [dispatch, params.id])
 
-  const item = {
-    id: currentProduct.id,
-    title: currentProduct.title,
-    image: currentProduct.image,
-    price: currentProduct.price
-  }
-
   const addItemHandler = () => {
+    const item = {
+      id: currentProduct.id,
+      title: currentProduct.title,
+      image: currentProduct.image,
+      price: currentProduct.price
+    }
     dispatch(cartActions.addItem(item))
   }
 

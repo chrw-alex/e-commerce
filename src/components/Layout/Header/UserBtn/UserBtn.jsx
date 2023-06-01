@@ -97,7 +97,7 @@ const UserBtn = () => {
           </FormInner>
         </Modal>}
       {isMenuVisible && <div className={style.menuInner}>
-        <UserMenu logoutHandler={logoutHandler} />
+        <UserMenu logoutHandler={logoutHandler} setIsMenuVisible={setIsMenuVisible} />
       </div>}
     </div>
   )
